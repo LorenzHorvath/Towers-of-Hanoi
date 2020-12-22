@@ -64,6 +64,13 @@ bool td_is_valid(Disk disk)
  */
 unsigned short td_get_size(Disk disk)
 {
+    if (td_is_valid(disk) == true)
+    {
+        if (disk->size != 0)
+        {
+            return disk->size;
+        }
+    }
     return 0;
 }
 
