@@ -18,7 +18,7 @@ struct DiskImpl
     unsigned short size;
 };
 
-struct DiskImpl disks[MAX_DISKS];
+struct DiskImpl disks[255];
 int diskCounter = 0;
 
 /**
@@ -31,7 +31,7 @@ int diskCounter = 0;
  */
 Disk td_get_disk(unsigned short size)
 {
-    if (0 < size && size <= MAX_DISKS && diskCounter <= MAX_DISKS)
+    if (0 < size && size <= MAX_DISKS && diskCounter <= 255)
     {
         disks[diskCounter].size = size;
         diskCounter++;
@@ -47,9 +47,13 @@ Disk td_get_disk(unsigned short size)
  * @param disk The disk in focus of this ADT.
  * @return True if the disk is valid, false otherwise.
  */
-Disk td_is_valid(Disk disk)
+bool td_is_valid(Disk disk)
 {
-    return 0;
+    if (disk != 0 && disk->size > 0 && disk->size <= MAX_DISKS && diskCounter <= 255)
+    {
+        return true;
+    }
+    return false;
 }
 
 /**

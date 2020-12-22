@@ -36,7 +36,7 @@ Disk td_get_disk(unsigned short size);
  * @param disk The disk in focus of this ADT.
  * @return True if the disk is valid, false otherwise.
  */
-Disk td_is_valid(Disk disk);
+bool td_is_valid(Disk disk);
 
 /**
  * Provides the size of the given disk.
