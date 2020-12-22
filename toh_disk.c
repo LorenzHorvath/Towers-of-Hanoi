@@ -31,7 +31,7 @@ int diskCounter = 0;
  */
 Disk td_get_disk(unsigned short size)
 {
-    if (size <= MAX_DISKS && diskCounter <= MAX_DISKS)
+    if (0 < size && size <= MAX_DISKS && diskCounter <= MAX_DISKS)
     {
         disks[diskCounter].size = size;
         diskCounter++;
