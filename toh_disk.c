@@ -18,6 +18,9 @@ struct DiskImpl
     unsigned short size;
 };
 
+struct DiskImpl disks[MAX_DISKS];
+int diskCounter = 0;
+
 /**
  * Provides the instance of the disk with the given size.
  * Valid disk sizes are from 1 to MAX_DISKS.
@@ -28,11 +31,11 @@ struct DiskImpl
  */
 Disk td_get_disk(unsigned short size)
 {
-    if (size <= MAX_DISKS)
+    if (size <= MAX_DISKS && diskCounter <= MAX_DISKS)
     {
-        struct DiskImpl disk;
-        disk.size = size;
-        return &disk;
+        disks[diskCounter].size = size;
+        diskCounter++;
+        return &disks[diskCounter - 1];
     }
     return 0;
 }
