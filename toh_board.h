@@ -3,7 +3,7 @@
  * ---------------------------------------------------------
  * Exercise Number: 09
  * Title:			Tower of Hanoi Board / Game
- * Author:			*/<your name>/*
+ * Author:			Lorenz Horvath
  * ----------------------------------------------------------
  * Description:
  * The declaration of an Abstract Data Type representing
@@ -14,11 +14,14 @@
  */
 
 /* == !Include guard and required includes need to be added */
-
+#include "toh_disk.h"
 
 /** The enumeration of available rods: LEFT, MIDDLE, RIGHT. */
-
+enum RodImpl {LEFT, MIDDLE, RIGHT};
+typedef enum RodImpl RodName;
+typedef Disk Rod;
 /** Declares type for the 'Tower of Hanoi' board */
+typedef struct BoardImpl* TohBoard;
 
 /**
  * Provides the instance of the 'Tower of Hanoi' board.
@@ -26,14 +29,14 @@
  * 
  * @return TohBoard The board instance.
  */
-<type> tb_get_board();
+TohBoard tb_get_board();
 
 /**
  * Removes all disks from any rod of the given board.
  * 
  * @param board The board instance in focus.
  */
-<type> tb_clear_board(<params>);
+TohBoard tb_clear_board(TohBoard TohBoard);
 
 /**
  * Determines whether or not the given board is valid.
@@ -42,7 +45,7 @@
  * @param board The board to evaluate.
  * @return If the given board is valid, false otherwise.
  */
-<type> tb_is_valid(<params>);
+TohBoard tb_is_valid(TohBoard TohBoard);
 
 /**
  * Provides the top-most disk of the given rod and removes it from this rod.
@@ -51,7 +54,7 @@
  * @param rodName The rod from which the disk shall be taken and removed.
  * @return The removed disk or 0, if no disk was on the rod.
  */
-<type> tb_pop_disk(<params>);
+TohBoard tb_pop_disk(TohBoard board, RodName rodName);
 
 /**
  * Applies the given disk to the given rod, if this 
@@ -63,7 +66,7 @@
  * @return True if the disk could be legally placed on the rod 
  * (move is allowed and disk is valid), false otherwise.
  */
-<type> tb_push_disk(<params>);
+TohBoard tb_push_disk(TohBoard board, RodName rodName, Disk disk);
 
 /**
  * Provides the disk from the named rod at the given position.
@@ -75,4 +78,4 @@
  * @return The addressed disk or 0, if not disk is located on the
  *         index position of the named rod.
  */
-<type> tb_get_disk(<params>);
+TohBoard tb_get_disk(TohBoard TohBoard, RodName rodName, int idx);

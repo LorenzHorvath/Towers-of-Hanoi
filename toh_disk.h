@@ -3,7 +3,7 @@
  * ---------------------------------------------------------
  * Exercise Number: 09
  * Title:			Tower of Hanoi Disk ADT
- * Author:			*/<your name>/*
+ * Author:			Lorenz Horvath
  * ----------------------------------------------------------
  * Description:
  * The declaration of an Abstract Data Type representing
@@ -13,10 +13,12 @@
  * ----------------------------------------------------------
  */
 
+
+#include <stdbool.h>
 /* == !Include guard and required includes need to be added */
 
 /** Declares a disk. */
-
+typedef struct DiskImpl* Disk;
 /**
  * Provides the instance of the disk with the given size.
  * Valid disk sizes are from 1 to MAX_DISKS.
@@ -25,7 +27,7 @@
  * @return The disk of the given size or 0, 
  *         if no such disk is available.
  */
-<type> td_get_disk(unsigned short <params>);
+Disk td_get_disk(unsigned short size);
 
 /**
  * Determines whether or not the given disk is valid.
@@ -34,7 +36,7 @@
  * @param disk The disk in focus of this ADT.
  * @return True if the disk is valid, false otherwise.
  */
-<type> td_is_valid(<params>);
+Disk td_is_valid(Disk disk);
 
 /**
  * Provides the size of the given disk.
@@ -42,7 +44,7 @@
  * @param disk The disk in focus of this ADT.
  * @return The size of the disk, if it is valid or 0 otherwise.
  */
-unsigned short td_get_size(<params>);
+unsigned short td_get_size(Disk disk);
 
 /**
  * Compares the size of the candidate disk with size of the given disk.
@@ -52,5 +54,5 @@ unsigned short td_get_size(<params>);
  * @return True if the 'smaller_candidate' disk is smaller than the 
  * given disk of this ADT and both disks are valid, false otherwise.
  */
-<type> td_is_smaller(<params>);
+bool td_is_smaller(Disk disk, Disk small);
 

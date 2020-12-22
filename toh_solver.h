@@ -3,7 +3,7 @@
  * ---------------------------------------------------------
  * Exercise Number: 09
  * Title:			Tower of Hanoi Board / Game
- * Author:			*/<your name>/*
+ * Author:			Lorenz Horvath
  * ----------------------------------------------------------
  * Description:
  * The Tower of Hanoi is a mathematical game or puzzle. 
@@ -32,7 +32,7 @@
  * 
  * @param disk_count The number of disks to use. Must be less than 'MAX_DISKS'.
  */
-<type> ts_init(<params>);
+void ts_init(int disk_count);
 
 /**
  * Solves the puzzle by moving all disks from the left rod to the right rod.
@@ -40,6 +40,4 @@
  * board was initialized.
  * 
  */
-<type> ts_solve();
-
-#endif
+void ts_solve();
