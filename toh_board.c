@@ -269,3 +269,13 @@ Disk tb_get_disk(TohBoard board, RodName rodName, int idx)
    }
    return 0;
 }
+
+int tb_get_left_rod_size(TohBoard board)
+{
+   int size = 0; 
+   while (board->leftRod[size] != 0)
+   {
+      size++;
+   }
+   return size;
+}

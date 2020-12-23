@@ -27,7 +27,7 @@
  * @return True if the move was successful and according to the rules, false otherwise.
  */
 static bool ts_move_disk(RodName source, RodName target) {
-    return 0;
+    return tb_push_disk(tb_get_board(), target, tb_pop_disk(tb_get_board(), source));
 }
 
 /**
@@ -43,7 +43,14 @@ static bool ts_move_disk(RodName source, RodName target) {
  * @return True if the move was successful and according to the rules, false otherwise.
  */
 static bool ts_move_stack(unsigned short size, RodName source, RodName intermediate, RodName target) {
-    return 0;
+    bool recursion = true;
+    if (size != 0)
+    {
+        recursion = recursion == true && ts_move_stack(size - 1, source, target, intermediate) == true ;
+        recursion = recursion == true && ts_move_disk(source, target) == true ;
+        recursion = recursion == true && ts_move_stack(size - 1, intermediate, source, target) == true ;
+    }
+    return recursion;
 }
 
 /* ========================================================= */
@@ -78,6 +85,8 @@ void ts_init(int disk_count)
  * 
  */
 void ts_solve()
-{
-    return 0;
+{ 
+    int size = tb_get_left_rod_size(tb_get_board());
+    ts_move_stack(size, LEFT, MIDDLE, RIGHT);
+    return;
 }

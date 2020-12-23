@@ -79,3 +79,5 @@ bool tb_push_disk(TohBoard board, RodName rodName, Disk disk);
  *         index position of the named rod.
  */
 Disk tb_get_disk(TohBoard TohBoard, RodName rodName, int idx);
+
+int tb_get_left_rod_size(TohBoard board);
