@@ -31,8 +31,12 @@ int diskCounter = 0;
  */
 Disk td_get_disk(unsigned short size)
 {
-    if (0 < size && size <= MAX_DISKS && diskCounter <= 255)
+    if (0 < size && size <= MAX_DISKS)
     {
+        if (diskCounter > 255)
+        {
+            diskCounter = 0;
+        }
         disks[diskCounter].size = size;
         diskCounter++;
         return &disks[diskCounter - 1];
@@ -49,7 +53,7 @@ Disk td_get_disk(unsigned short size)
  */
 bool td_is_valid(Disk disk)
 {
-    if (disk != 0 && disk->size > 0 && disk->size <= MAX_DISKS && diskCounter <= 255)
+    if (disk != 0 && disk->size > 0 && disk->size <= MAX_DISKS)
     {
         return true;
     }
@@ -84,6 +88,13 @@ unsigned short td_get_size(Disk disk)
  */
 bool td_is_smaller(Disk disk, Disk small)
 {
-    return 0;
+    if (td_is_valid(disk) == true && td_is_valid(small) == true)
+    {
+        if (td_get_size(disk) > td_get_size(small))
+        {
+            return true;
+        }
+    }
+    return false;
 }
 

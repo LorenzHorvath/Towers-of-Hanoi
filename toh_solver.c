@@ -13,6 +13,7 @@
 /* Includes, definitions and instanciations */
 #include <stdbool.h>
 #include "toh_board.h"
+#include "config.h"
 
 /* ========================================================= */
 /* Private functions                                         */
@@ -60,7 +61,14 @@ static bool ts_move_stack(unsigned short size, RodName source, RodName intermedi
  */
 void ts_init(int disk_count)
 {
-    return 0;
+    if (disk_count <= MAX_DISKS)
+    {
+        TohBoard board = tb_clear_board(tb_get_board());
+        for (int i = disk_count; i > 0; i--)
+        {
+            tb_push_disk(board, LEFT, td_get_disk(i));
+        }
+    }
 }
 
 /**
